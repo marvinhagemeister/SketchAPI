@@ -15,7 +15,9 @@
     "test-watch": "npm t -- -w -R min",
     "coverage": "nyc npm t",
     "coverage-open": "nyc npm t && open coverage/index.html",
-    "build": "webpack --display-error-details"
+    "build": "webpack --display-error-details",
+    "lint": "tslint src/",
+    "clean": "rimraf dist/"
   },
   "devDependencies": {
     "@types/chai": "^3.4.34",
@@ -26,6 +28,7 @@
     "enhanced-resolve": "^2.3.0",
     "mocha": "^3.1.2",
     "nyc": "^9.0.1",
+    "rimraf": "^2.5.4",
     "sinon": "^1.17.6",
     "ts-node": "^1.7.0",
     "tslint": "^4.0.1",
