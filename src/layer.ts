@@ -11,7 +11,7 @@ export enum LAYER_TYPE {
   SHAPE = 7
 }
 
-interface Border {}
+export interface Border {}
 
 export default class Layer extends BaseLayer {
   fills: IFill[] = [];

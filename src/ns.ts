@@ -4,22 +4,22 @@ export interface DocumentData {
 
 export interface NSObject {
   objectID(): number;
-  setName_(name: string);
+  setName_(name: string): void;
   name(): string;
   documentData(): DocumentData;
   document: NSAlerter;
 }
 
 export interface NSAlerter {
-  showMessage(message: string);
+  showMessage(message: string): void;
 }
 
-export interface NSText extends NSObject {
+export interface NSText extends INSLayer {
   textAlignment: number;
   stringValue: string;
   textBehaviour: number;
-  setIsEditingText(active: boolean);
-  addAttribute_value_forRange(attribute: string, value: any, range: NSRange);
+  setIsEditingText(active: boolean): void;
+  addAttribute_value_forRange(attribute: string, value: any, range: NSRange): void;
 }
 
 export interface INSLayerStyle {
@@ -36,12 +36,12 @@ export interface SketchFrame {
   midY(): number;
   midX: number;
   midY: number;
-  width(): number;
-  height(): number;
+  width: number;
+  height: number;
 }
 
 export interface INSLayer extends NSObject {
-  multiplyBy(factor: number);
+  multiplyBy(factor: number): void;
   frame(): SketchFrame;
   style(): INSLayerStyle;
 }

@@ -14,8 +14,12 @@ enum ATTRIBUTES {
   FOREGROUND_COLOR = 1,
 }
 
-const mappings = {
-  "1": "NSColor"
+interface MAPPINGS {
+  [key: number]: string;
+}
+
+const mappings: MAPPINGS = {
+  1: "NSColor"
 };
 
 export default class Text extends BaseLayer {

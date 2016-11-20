@@ -1,4 +1,4 @@
-import { NSObject } from "./ns";
+import { INSLayer, SketchFrame } from "./ns";
 
 export interface Point {
   x: number;
@@ -16,16 +16,16 @@ export enum FLIP_DIRECTION {
 }
 
 export default class BaseLayer {
-  protected object;
+  protected object: INSLayer;
   public type: number;
   private _width = 0;
   private _height = 0;
 
-  constructor(object: NSObject) {
+  constructor(object: INSLayer) {
     this.object = object;
   }
 
-  frame() {
+  frame(): SketchFrame {
     return this.object.frame();
   }
 
@@ -117,6 +117,11 @@ export default class BaseLayer {
   }
 
   flip(direction: number) {
+    if (direction === FLIP_DIRECTION.HORIZONTAL) {
+
+    } else {
+
+    }
 
     return this;
   }

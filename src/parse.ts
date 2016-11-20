@@ -32,17 +32,22 @@ export function parseColor(color: NSColor): IColor {
   return c;
 }
 
-export function parseFills(fills: NSFill[]): IFill[] {
+interface FILL_MAP {
+  [key: string]: number;
+}
 
-  return fills.map(fill => {
-    const data = FILL_TYPE[fill.fillType()] === FILL_TYPE.color
-      ? parseColor(fill.color())
-      : null;
+export function parseFills(fills: NSFill[]) {
 
-    return {
-      type: parseInt(FILL_TYPE[fill.fillType()]),
-      enabled: fill.isEnabled(),
-      data
-    };
-  });
+  // return fills.map(fill => {
+  //   const key = fill.fillType();
+  //   const data = FILL_TYPE[fill.fillType()] === FILL_TYPE.color
+  //     ? parseColor(fill.color())
+  //     : null;
+
+  //   return {
+  //     type: parseInt(FILL_TYPE[fill.fillType()]),
+  //     enabled: fill.isEnabled(),
+  //     data
+  //   };
+  // });
 }

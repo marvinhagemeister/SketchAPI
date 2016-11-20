@@ -11,7 +11,7 @@ export default class App {
   apiVersion = "1.1";
   version: number;
   buildNumber: number;
-  document;
+  document: any;
 
   constructor() {
     // const metadata = MSApplicationMetadata.metadata();
