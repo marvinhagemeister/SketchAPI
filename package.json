@@ -9,6 +9,7 @@
     "type": "git",
     "url": "git@github.com:BohemianCoding/SketchAPI.git"
   },
+  "typings": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
