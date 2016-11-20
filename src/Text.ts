@@ -1,6 +1,7 @@
-import BaseLayer from './baseLayer';
+import BaseLayer from './BaseLayer';
+import Range from "./Range";
 import { LAYER_TYPE } from './layer';
-import { NSText } from "./ns";
+import { NSText, NSRange } from "./ns";
 
 export enum TEXT_ALIGNMENT {
   LEFT = 1,
@@ -9,9 +10,18 @@ export enum TEXT_ALIGNMENT {
   JUSTIFY = 4
 }
 
+enum ATTRIBUTES {
+  FOREGROUND_COLOR = 1,
+}
+
+const mappings = {
+  "1": "NSColor"
+};
+
 export default class Text extends BaseLayer {
   type = LAYER_TYPE.TEXT;
   object: NSText;
+  private _editmode: boolean = false;
 
   get text() {
     return this.object.stringValue;
@@ -27,5 +37,38 @@ export default class Text extends BaseLayer {
 
   set fixedWidth(isFixed: boolean) {
     this.object.textBehaviour = isFixed ? 0 : 1;
+  }
+
+  get editmode() {
+    return this._editmode;
+  }
+
+  set editmode(active) {
+    this.object.setIsEditingText(active);
+    this._editmode = active;
+  }
+
+  addAttribute(attribute: number, value: any, range?: NSRange) {
+    let selfEdit = false;
+
+    if (!this._editmode) {
+      this.editmode = true;
+      selfEdit = true;
+    }
+
+    const attr = mappings[attribute];
+    if (typeof attr === "undefined") {
+      throw new Error("Unknown attribute: " + attribute);
+    }
+
+    if (typeof range === "undefined") {
+      range = new Range(0, this.text.length);
+    }
+
+    this.object.addAttribute_value_forRange(attr, value, range);
+
+    if (selfEdit) {
+      this.editmode = false;
+    }
   }
 }
