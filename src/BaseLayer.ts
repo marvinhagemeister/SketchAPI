@@ -50,8 +50,8 @@ export default class BaseLayer {
 
   get position(): Point {
     const frame = this.object.frame();
-    const midX = frame.midX();
-    const midY = frame.midY();
+    const midX = frame.midX;
+    const midY = frame.midY;
 
     return {
       x: midX,
@@ -64,7 +64,7 @@ export default class BaseLayer {
 
     this.object.multiplyBy(factor);
     this.move(x, y, MOVE_MODE.ABSOLUTE);
-    
+
     return this;
   }
 

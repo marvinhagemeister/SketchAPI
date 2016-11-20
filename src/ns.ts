@@ -7,9 +7,11 @@ export interface NSObject {
   setName_(name: string);
   name(): string;
   documentData(): DocumentData;
-  document: {
-    showMessage(message: string);
-  }
+  document: NSAlerter;
+}
+
+export interface NSAlerter {
+  showMessage(message: string);
 }
 
 export interface NSText extends NSObject {
@@ -18,10 +20,21 @@ export interface NSText extends NSObject {
   textBehaviour: number;
 }
 
-export interface NSLayer {
-  style: {
-    fills(): any[];
-  }
+export interface INSLayerStyle {
+  fills(): any[];
+}
+
+export interface SketchFrame {
+  midX(): number;
+  midY(): number;
+  midX: number;
+  midY: number;
+}
+
+export interface INSLayer extends NSObject {
+  multiplyBy(factor: number);
+  frame(): SketchFrame;
+  style(): INSLayerStyle;
 }
 
 export interface NSColor {
