@@ -3,7 +3,7 @@ import Range from "./Range";
 import { LAYER_TYPE } from './layer';
 import { NSText, NSRange } from "./ns";
 
-export enum TEXT_ALIGNMENT {
+export enum TEXT_ALIGN {
   LEFT = 1,
   CENTER = 2,
   RIGHT = 3,
@@ -49,13 +49,6 @@ export default class Text extends BaseLayer {
   }
 
   addAttribute(attribute: number, value: any, range?: NSRange) {
-    let selfEdit = false;
-
-    if (!this._editmode) {
-      this.editmode = true;
-      selfEdit = true;
-    }
-
     const attr = mappings[attribute];
     if (typeof attr === "undefined") {
       throw new Error("Unknown attribute: " + attribute);
@@ -66,9 +59,5 @@ export default class Text extends BaseLayer {
     }
 
     this.object.addAttribute_value_forRange(attr, value, range);
-
-    if (selfEdit) {
-      this.editmode = false;
-    }
   }
 }
