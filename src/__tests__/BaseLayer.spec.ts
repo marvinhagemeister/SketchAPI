@@ -68,6 +68,7 @@ describe("BaseLayer", () => {
 
     layer
       .move(10, 10)
-      .scale(2);
+      .scale(2)
+      .move(10, 10);
   });
 });
