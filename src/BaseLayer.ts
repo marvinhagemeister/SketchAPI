@@ -10,7 +10,7 @@ export enum MOVE_MODE {
   ABSOLUTE = 2
 }
 
-export enum MIRROR_DIRECTION {
+export enum FLIP_DIRECTION {
   HORIZONTAL = 1,
   VERTICAL = 2
 }
@@ -74,14 +74,18 @@ export default class BaseLayer {
     return this.findById(parseInt(name));
   }
 
+  set position(point: Point) {
+    const frame = this.object.frame();
+    frame.midX = point.x;
+    frame.midY = point.y;
+  }
+
   get position(): Point {
     const frame = this.object.frame();
-    const midX = frame.midX;
-    const midY = frame.midY;
 
     return {
-      x: midX,
-      y: midY
+      x: frame.midX,
+      y: frame.midY
     }
   }
 
@@ -99,13 +103,21 @@ export default class BaseLayer {
     const isRelative = typeof mode === "undefined"
       || mode === MOVE_MODE.RELATIVE;
 
-    this.object.frame().midX = isRelative ? pos.x + x : x;
-    this.object.frame().midY = isRelative ? pos.y + y : y;
+    x = isRelative ? pos.x + x : x;
+    y = isRelative ? pos.y + y : y;
+
+    this.position = { x, y };
 
     return this;
   }
 
-  mirror(direction: number) {
+  rotate(degree: number) {
+
+    return this;
+  }
+
+  flip(direction: number) {
+
     return this;
   }
 
