@@ -1,7 +1,6 @@
-import BaseLayer from './BaseLayer';
+import BaseLayer from "./BaseLayer";
 import Range from "./Range";
-import { LAYER_TYPE } from './layer';
-import { NSText, NSRange } from "./ns";
+import { LAYER_TYPE } from "./layer";
 
 export enum TEXT_ALIGN {
   LEFT = 1,

@@ -1,5 +1,3 @@
-import { NSObject, INSLayer, INSLayerStyle, SketchFrame } from "../ns";
-
 class LayerStyles implements INSLayerStyle {
   fills(): any[] {
     return [];
@@ -7,7 +5,7 @@ class LayerStyles implements INSLayerStyle {
 }
 
 class DocumentData {
-  layerWithID_(id) {
+  layerWithID_(id: any) {
     return "whatever";
   }
 }
@@ -15,16 +13,8 @@ class DocumentData {
 class Frame implements SketchFrame {
   public midX = 0;
   public midY = 0;
-  public _width = 0;
-  public _height = 0;
-
-  width() {
-    return this._width;
-  }
-
-  height() {
-    return this._height;
-  }
+  public width = 0;
+  public height = 0;
 }
 
 export class NSLayer implements INSLayer {
@@ -32,9 +22,9 @@ export class NSLayer implements INSLayer {
   y: number;
   private _name: string;
   private _styles: LayerStyles;
-  private _frame;
+  private _frame: Frame;
   public document = {
-    showMessage(message): void {
+    showMessage(message: string): void {
     }
   };
 
@@ -51,7 +41,7 @@ export class NSLayer implements INSLayer {
     return 1;
   }
 
-  setName_(name) {
+  setName_(name: string) {
     this._name = name;
   }
 
@@ -59,7 +49,7 @@ export class NSLayer implements INSLayer {
     return this._name;
   }
 
-  multiplyBy(factor) {
+  multiplyBy(factor: number) {
     const frame = this._frame;
     const width = frame.width === 0 ? 1 : frame.width;
     const height = frame.height === 0 ? 1 : frame.height;

@@ -8,6 +8,7 @@
     "outDir": "dist/"
   },
   "files": [
+    "./typings/ns.d.ts",
     "./src/index.ts"
   ]
 }

@@ -1,5 +1,3 @@
-import { INSLayer, SketchFrame } from "./ns";
-
 export interface Point {
   x: number;
   y: number;

@@ -1,5 +1,4 @@
 import { IFill, FILL_TYPE } from "./fill";
-import { NSColor, NSFill } from "./ns";
 
 export interface IColor {
   r: number;
