@@ -6,7 +6,10 @@ import { NSLayer } from "./stubs";
 describe("BaseLayer", () => {
   it("should scale", () => {
     const mock = new NSLayer();
+    const frame = mock.frame();
     const layer = new BaseLayer(mock);
+    layer.width = 100;
+    layer.height = 200;
 
     t.deepEqual(layer.position, {
       x: 0,
@@ -20,7 +23,8 @@ describe("BaseLayer", () => {
       y: 0
     });
 
-    // TODO: assert width and height
+    t.equal(frame.width, 200);
+    t.equal(frame.height, 400);
   });
 
   it("should move relative", () => {

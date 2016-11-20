@@ -18,9 +18,35 @@ export enum MIRROR_DIRECTION {
 export default class BaseLayer {
   protected object;
   public type: number;
+  private _width = 0;
+  private _height = 0;
 
   constructor(object: NSObject) {
     this.object = object;
+  }
+
+  frame() {
+    return this.object.frame();
+  }
+
+  get width() {
+    return this._width;
+  }
+
+  set width(width: number) {
+    const frame = this.object.frame();
+    frame.width = width;
+    this._width = width;
+  }
+
+  get height() {
+    return this._height;
+  }
+
+  set height(height: number) {
+    const frame = this.object.frame();
+    frame.height = height;
+    this._height = height;
   }
 
   get id() {

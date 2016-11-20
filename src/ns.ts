@@ -27,8 +27,8 @@ export interface INSLayerStyle {
 export interface SketchFrame {
   midX(): number;
   midY(): number;
-  midX: number;
-  midY: number;
+  width(): number;
+  height(): number;
 }
 
 export interface INSLayer extends NSObject {
