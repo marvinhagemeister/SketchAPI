@@ -84,7 +84,7 @@ export default class BaseLayer {
     return {
       x: frame.midX,
       y: frame.midY
-    }
+    };
   }
 
   scale(factor: number) {

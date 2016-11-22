@@ -31,9 +31,9 @@ export function parseColor(color: NSColor): IColor {
   return c;
 }
 
-interface FILL_MAP {
-  [key: string]: number;
-}
+// interface FILL_MAP {
+//   [key: string]: number;
+// }
 
 export function parseFills(fills: NSFill[]) {
 
